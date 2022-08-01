@@ -1,7 +1,5 @@
 /* See LICENSE file for copyright and license details. */
 
-/* theme management */
-# include "theme.h"
 
 /*
  * appearance
