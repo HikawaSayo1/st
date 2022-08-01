@@ -15,13 +15,7 @@ options:
 	@echo "LDFLAGS = $(STLDFLAGS)"
 	@echo "CC      = $(CC)"
 
-theme.h:
-	./xtheme
-
-theme_beg.h:
-	./themesetup
-
-config.h: theme.h
+config.h: 
 	cp -n config.def.h config.h
 
 .c.o:
@@ -31,14 +25,13 @@ st.o: config.h st.h win.h
 x.o: arg.h config.h st.h win.h
 boxdraw.o: config.h st.h boxdraw_data.h
 
-$(OBJ): config.h theme_beg.h config.mk
+$(OBJ): config.h config.mk
 
 st: $(OBJ)
 	$(CC) -o $@ $(OBJ) $(STLDFLAGS)
-	rm -f theme_{beg,end}.h
 
 clean:
-	rm -f st $(OBJ) theme_{beg,end}.h st-$(VERSION).tar.gz
+	rm -f st $(OBJ) st-$(VERSION).tar.gz
 
 dist: clean
 	mkdir -p st-$(VERSION)
